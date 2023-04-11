@@ -1,0 +1,17 @@
+{
+	"name": "watermark_ddl",
+	"properties": {
+		"content": {
+			"query": "\nDROP TABLE [active].[current_watermark] \nGO\n\nCREATE TABLE [active].[current_watermark] ([process_date_hour] DATETIME NOT NULL)\nGO\n\nTRUNCATE TABLE [active].[current_watermark]\nGO\n\nINSERT INTO [active].[current_watermark]\nVALUES ('20210101 00:00:00')\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kundanpool",
+				"poolName": "kundanpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"name": "customer",
+	"properties": {
+		"activities": [
+			{
+				"name": "get_date_list",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlPoolSource",
+						"sqlReaderQuery": "DECLARE @StartDate DATE = (\n\t\tSELECT dateadd(day, - 1, CONVERT(VARCHAR(10), [process_date_hour], 126)) [LAST_UPDATE]\n\t\tFROM [active].[current_watermark]\n\t\t)\nDECLARE @EndDate DATE = (\n\t\tSELECT cast(DATEADD(day, - 1, getdate()) AS DATE) AS StartDate\n\t\t)\n\nSELECT [LAST_UPDATE]\n\t,CONCAT (\n\t\t'customers_'\n\t\t,[LAST_UPDATE]\n\t\t) AS [FILE_NAME]\n\t,CONCAT (\n\t\t'kundan/sample-data/'\n\t\t,REPLACE(CONVERT(VARCHAR(7), [LAST_UPDATE], 112), '-', '/')\n\t\t) AS [DATA_DIR]\nFROM (\n\tSELECT TOP (DATEDIFF(DAY, @StartDate, @EndDate)) [LAST_UPDATE] = convert(VARCHAR(10), cast(DATEADD(DAY, ROW_NUMBER() OVER (\n\t\t\t\t\t\tORDER BY a.object_id\n\t\t\t\t\t\t), @StartDate) AS DATE), 126)\n\tFROM sys.all_objects a\n\tCROSS JOIN sys.all_objects b\n\t) A\nORDER BY [LAST_UPDATE] ASC\n",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "SqlPoolTable1",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-04-11T17:10:55Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

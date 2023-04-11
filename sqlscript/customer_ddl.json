@@ -1,0 +1,17 @@
+{
+	"name": "customer_ddl",
+	"properties": {
+		"content": {
+			"query": "\nIF EXISTS (\n\t\tSELECT *\n\t\tFROM sys.schemas\n\t\tWHERE name = 'active'\n\t\t)\n\tDROP SCHEMA [active]\nGO\n\n\nCREATE SCHEMA [active] AUTHORIZATION [dbo]\nGO\n\n\n\nCREATE TABLE [active].[customer_acquistion_data] (\n\t[customer_id] INT NOT NULL\n\t,[relationship_manager_id] INT NOT NULL\n\t,[last_updated] DATE NOT NULL\n\t,[deposit_amount] DECIMAL NOT NULL\n\t)\nWITH  \n  (   \n    DISTRIBUTION = HASH (customer_id),  \n    CLUSTERED COLUMNSTORE INDEX\n  )  \nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kundanpool",
+				"poolName": "kundanpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

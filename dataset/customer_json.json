@@ -1,0 +1,44 @@
+{
+	"name": "customer_json",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kundan-workspace-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Container": {
+				"type": "string",
+				"defaultValue": "kundan"
+			},
+			"Dir_name": {
+				"type": "string",
+				"defaultValue": "sample-data"
+			},
+			"file_name": {
+				"type": "string",
+				"defaultValue": "customers_2021-01-01.json"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().Dir_name",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().Container",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}
