@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "kundan-workspace"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"kundan-workspace-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:kundan-workspace.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://kundan-key-vault.vault.azure.net/"
+		},
+		"kundan-workspace-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://datalakekundan.dfs.core.windows.net"
+		}
+	}
+}
