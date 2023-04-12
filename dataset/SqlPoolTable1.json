@@ -35,8 +35,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "active",
-			"table": "current_watermark"
+			"schema": "dbo",
+			"table": "data_source_table"
 		},
 		"sqlPool": {
 			"referenceName": "kundanpool",
