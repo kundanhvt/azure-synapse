@@ -35,8 +35,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "Geography"
+			"schema": "active",
+			"table": "current_watermark"
 		},
 		"sqlPool": {
 			"referenceName": "kundanpool",

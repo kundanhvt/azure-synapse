@@ -1,0 +1,17 @@
+{
+	"name": "data_source_table",
+	"properties": {
+		"content": {
+			"query": "-- create table data_source_table\n--  (\n--  \t[PersonID] int,\n--  \t[Name] varchar(255),\n--  \t[LastModifytime] datetime\n--  );\n\n--  INSERT INTO data_source_table ([PersonID], [Name], [LastModifytime])\n--  VALUES (1, 'aaaa','9/1/2017 12:56:00 AM');\n \n--  INSERT INTO data_source_table ([PersonID], [Name], [LastModifytime])\n--  VALUES (2, 'bbbb','9/2/2017 5:23:00 AM');\n \n--  INSERT INTO data_source_table ([PersonID], [Name], [LastModifytime])\n--  VALUES (3, 'cccc','9/3/2017 2:36:00 AM');\n\n--  INSERT INTO data_source_table ([PersonID], [Name], [LastModifytime])\n--  VALUES (4, 'dddd','9/4/2017 3:21:00 AM');\n \n--  INSERT INTO data_source_table ([PersonID], [Name], [LastModifytime])\n--  VALUES (5, 'eeee','9/5/2017 8:06:00 AM');\n\n\n INSERT INTO data_source_table\n (PersonID, Name, LastModifytime)\n VALUES\n (1, 'aaaa', '9/1/2017 12:56:00 AM'),\n (2, 'bbbb', '9/2/2017 5:23:00 AM'),\n (3, 'cccc', '9/3/2017 2:36:00 AM'),\n (4, 'dddd', '9/4/2017 3:21:00 AM'),\n (5, 'eeee', '9/5/2017 8:06:00 AM');",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kundanpool",
+				"poolName": "kundanpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

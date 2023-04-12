@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "-- create table watermarktable\n-- (\n-- TableName varchar(255),\n-- WatermarkValue datetime);\n\n-- INSERT INTO watermarktable\n-- VALUES ('data_source_table','1/1/2010 12:00:00 AM')\n\n-- Select * from watermarktable;\nCREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)\nAS\nBEGIN\nUPDATE watermarktable\nSET [WatermarkValue] = @LastModifiedtime\nWHERE [TableName] = @TableName\nEND",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "kundanpool",
+				"poolName": "kundanpool"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
